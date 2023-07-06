@@ -1,5 +1,8 @@
 package com.example.restfulwebservice.user;
 
+import org.apache.coyote.Response;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -41,7 +44,12 @@ public class UserController {
                 .buildAndExpand(savedUser.getId())
                 .toUri();
 
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.set("location", String.valueOf(location));
+
         return ResponseEntity.created(location).build();
+//        return ResponseEntity.created(location).body(savedUser);
+//        return ResponseEntity.ok().headers(headers).body(savedUser);
     }
 
     @DeleteMapping("/users/{id}")
